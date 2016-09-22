@@ -20,7 +20,7 @@ class PlistTests: XCTestCase {
    Test that plists are loaded as dicts.
    */
   func testDictionaryLoading () {
-    let dictionary = Bundle(for: type(of: self)).loadPlist("Credits")
+    let dictionary = NSBundle(forClass: self.dynamicType).loadPlist("Credits")
     XCTAssert((dictionary as Any) is NSDictionary)
     XCTAssert(dictionary!.allKeys.count == 2)
     XCTAssertNotNil(dictionary!["StringsTable"])
@@ -28,7 +28,7 @@ class PlistTests: XCTestCase {
   }
   
   func testLoadingNonexistentPlists() {
-    let dictionary = Bundle(for: type(of: self)).loadPlist("FooPlist")
+    let dictionary = NSBundle(forClass: self.dynamicType).loadPlist("FooPlist")
     debugPrint(dictionary)
     XCTAssertEqual(dictionary, nil)
   }
@@ -40,7 +40,7 @@ class PlistTests: XCTestCase {
    Test that valid NSDictionary structures get transformed into CreditItem arrays.
    */
   func testTransformingDictToCreditItems() {
-    let dictionary = Bundle(for: type(of: self)).loadPlist("Credits")!
+    let dictionary = NSBundle(forClass: self.dynamicType).loadPlist("Credits")!
     let items = dictionary.toLicenseItems()
     XCTAssert((items as Any) is Array<LicenseItem>)
     XCTAssert(items.count == 3)

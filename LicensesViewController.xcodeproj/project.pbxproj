@@ -180,11 +180,9 @@
 				TargetAttributes = {
 					2BB6FC561CB124EB00B45B82 = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
 					};
 					2BB6FC601CB124EB00B45B82 = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -378,7 +376,6 @@
 				PRODUCT_NAME = LicensesViewController;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -396,7 +393,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.relaunch.LicensesViewController;
 				PRODUCT_NAME = LicensesViewController;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -407,7 +403,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.relaunch.LicensesViewControllerTests;
 				PRODUCT_NAME = LicensesViewControllerTests;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -418,7 +413,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.relaunch.LicensesViewControllerTests;
 				PRODUCT_NAME = LicensesViewControllerTests;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

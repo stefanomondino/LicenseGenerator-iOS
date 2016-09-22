@@ -23,7 +23,7 @@ class DataSourceTests: XCTestCase {
   
   override func setUp() {
     super.setUp()
-    let testItemsDict = Bundle(for: type(of: self)).loadPlist("Credits")
+    let testItemsDict = NSBundle(forClass: self.dynamicType).loadPlist("Credits")
     if let dict = testItemsDict {
       testItems = dict.toLicenseItems()
     }
@@ -47,7 +47,7 @@ class DataSourceTests: XCTestCase {
    */
   func testNumbersOfSectionsInTableView() {
     let dataSource = LicensesDataSource(reuseIdentifier: "identifier", items: testItems) { _ in }
-    let sections = dataSource.numberOfSections(in: UITableView())
+    let sections = dataSource.numberOfSectionsInTableView(UITableView())
     XCTAssertEqual(sections, 3)
   }
   
@@ -58,7 +58,7 @@ class DataSourceTests: XCTestCase {
    Test that cells are configured correctly.
    */
   func testCellConfiguration() {
-    let indexPath = IndexPath(row: 0, section: 1)
+    let indexPath = NSIndexPath(forRow: 0, inSection: 1)
     let reuseIdentifier = "TestCell"
     let tableView = UITableView()
     
@@ -71,14 +71,14 @@ class DataSourceTests: XCTestCase {
       configuredItem = item
     })
     
-    tableView.register(LicenseCell.classForCoder(), forCellReuseIdentifier: reuseIdentifier)
+    tableView.registerClass(LicenseCell.classForCoder(), forCellReuseIdentifier: reuseIdentifier)
     tableView.dataSource = dataSource
     
-    let result = dataSource.tableView(tableView, cellForRowAt: indexPath)
+    let result = dataSource.tableView(tableView, cellForRowAtIndexPath: indexPath)
     
     XCTAssertEqual(result, configuredCell)
-    XCTAssertEqual(testItems[(indexPath as NSIndexPath).section].title, configuredItem?.title)
-    XCTAssertEqual(testItems[(indexPath as NSIndexPath).section].body, configuredItem?.body)
+    XCTAssertEqual(testItems[indexPath.section].title, configuredItem?.title)
+    XCTAssertEqual(testItems[indexPath.section].body, configuredItem?.body)
   }
   
   // MARK: - Get Items
@@ -88,9 +88,9 @@ class DataSourceTests: XCTestCase {
    */
   func testItemAtIndexPath() {
     let dataSource = LicensesDataSource(reuseIdentifier: "identifier", items: testItems) { _ in }
-    let firstItem = dataSource.itemAtIndexPath(IndexPath(row: 0, section: 0))
-    let secondItem = dataSource.itemAtIndexPath(IndexPath(row: 0, section: 1))
-    let thirdItem = dataSource.itemAtIndexPath(IndexPath(row: 0, section: 2))
+    let firstItem = dataSource.itemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+    let secondItem = dataSource.itemAtIndexPath(NSIndexPath(forRow: 0, inSection: 1))
+    let thirdItem = dataSource.itemAtIndexPath(NSIndexPath(forRow: 0, inSection: 2))
     
     XCTAssertEqual(firstItem.title, "TestLibFoo1")
     XCTAssertEqual(secondItem.title, "TestLibFoo2")
